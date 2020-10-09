@@ -18,7 +18,7 @@
                         </h1>
                         
                         <div class="col-xs-6">
-                        	<form action="">
+                        	<form action="" method="">
                         		<div class="form-group">
                         			<label for="cat_title">Add Category</label>
                         			<input type="text" class="form-control" name="cat_title">
@@ -27,10 +27,10 @@
                         			<input class="btn btn-primary" type="submit" name="submit" 
                         			value = "Add category"> 
                         		</div>                        	
-                        	</form>                        
+                        	</form>    
+                       	                    
                         </div>
-                        
-                        
+                                
                         <div class="col-xs-6">
                         	<table class="table table-bordered table-hover">
                         		<thead>
@@ -41,12 +41,27 @@
                         		</thead>
                         		<tbody>
                         			<tr>
-                        				<td>1</td>
-                        				<td>Category 1</td>
+                        			<?php 
+                        			
+                        			$query = 'SELECT * FROM categories';
+                        			$select_categories = mysqli_query($connection, $query);  
+                        			
+                        			while($row = mysqli_fetch_assoc($select_categories)) {
+                        			    $cat_id = $row['cat_id'];
+                        			    $cat_title = $row['cat_title'];
+                        			    echo "<tr>";
+                        			    echo "<td>{$cat_id}</td>";
+                        			    echo "<td>{$cat_title}</td>";
+                        			    echo "</tr>";
+                        			}
+                        			
+                        			?>
                         			</tr>
                         		</tbody>
                         	</table>
                         </div>
+        
+    
                         
                         
                     </div>

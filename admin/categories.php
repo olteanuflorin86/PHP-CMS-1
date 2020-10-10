@@ -20,6 +20,9 @@
                         <div class="col-xs-6">
                         
                             <?php 
+                                /*
+                                 * // THIS IS MOVED INTO admin/functions.php - insert_categories
+                                 * 
                                 //THIS IS FOR POST A CATEGORY IN DB
                                 if(isset($_POST['submit'])) {
                                     //echo "Submited category";
@@ -40,7 +43,9 @@
                                         }
                                      }
                                 }
-                         		
+                         		*/
+                            
+                                insert_categories();
                             ?>                        
 
                         	<form action="" method="post">
@@ -53,7 +58,7 @@
                         		</div>                        	
                         	</form>   
                         	
-                        	<?php 
+                        	<?php  // UPDATE AND INCLUDE QUERY
                         	
                         	if(isset($_GET['edit'])) {
                         	    
@@ -80,6 +85,9 @@
                         			<tr>
                         			<?php 
                         			
+                        			 /*
+                        			  * // THIS IS MOVED INTO admin/functions.php - findAllCategories
+                        			  * 
                         			// FIND ALL CATEGORIES QUERY
                         			$query = 'SELECT * FROM categories';
                         			$select_categories = mysqli_query($connection, $query); 
@@ -95,10 +103,16 @@
                         			    echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
                         			    echo "</tr>";
                         			}
+                        			*/
+                        			 findAllCategories();
                         			
                         			?>
                         			
                         			<?php 
+                        			 
+                        			/*
+                        			 * // THIS IS MOVED INTO admin/functions.php - findAllCategories
+                        			 * 
                         			 // THIS IS FOR DELETE A CATEGORY IN DB
                         			if(isset($_GET['delete'])) {
                         			    $the_cat_id = $_GET['delete'];
@@ -110,7 +124,8 @@
                         			    header("Location: categories.php");
                         			    
                         			}
-                        			
+                        			*/
+                        			deleteCategories()
                         			
                         			?>
                         			</tr>

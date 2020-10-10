@@ -20,8 +20,8 @@
                                
                     Page Heading
                     <small>Secondary Text</small>
-                </h1>
-                
+                </h1>                
+            
                 <?php 
                 
 	               // FIND ALL POSTS QUERY

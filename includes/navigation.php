@@ -32,11 +32,7 @@
                     }
                 
                 ?>
-                
-                	<li>
-                        <a href="admin">Admin</a>
-                    </li>
-                
+             
                 <!-- 
                     <li>
                         <a href="#">About</a>

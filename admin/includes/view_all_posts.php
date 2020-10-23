@@ -52,8 +52,9 @@
                             		    <td><?php echo $post_tags; ?></td>
                             		    <td><?php echo $post_comment_count; ?></td>
                             		    <td><?php echo $post_status; ?></td>
+                            		    <td><a href=<?php echo "posts.php?delete={$post_id}"; ?>>Delete</a></td>
                         			</tr>
-                        		<?php } ?>                        		
-                        		</tr>
+                        		<?php } ?>  
+                        		<?php deletePosts(); ?>                      		
                         	</tbody>
                         </table>

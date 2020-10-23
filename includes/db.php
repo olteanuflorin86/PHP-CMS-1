@@ -6,10 +6,10 @@
 //$connection = mysqli_connect('localhost', 'root', 'root', 'php-cms-1', '3306');
 // we can skip 3306 if this is the port. But we have to put the password (root for phpMyAdmin)
 
-$db['db_host'] = "";
-$db['db_user'] = ""; 
-$db['db_pass'] = "";
-$db['db_name'] = "";
+$db['db_host'] = "localhost";
+$db['db_user'] = "root"; 
+$db['db_pass'] = "root";
+$db['db_name'] = "php-cms-1";
 
 foreach($db as $key => $value) {
     define(strtoupper($key), $value);

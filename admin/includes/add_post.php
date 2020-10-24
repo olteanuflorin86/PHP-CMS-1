@@ -8,7 +8,7 @@
         
         $post_title = $_POST['title'];
         $post_author = $_POST['author'];
-        $post_category_id = $_POST['post_category_id'];
+        $post_category_id = $_POST['post_category'];
         $post_status = $_POST['post_status'];
         
         $post_image = $_FILES['image']['name'];
@@ -18,7 +18,6 @@
         $post_content = $_POST['post_content'];
         $post_date = date('d-m-y');
         $post_comment_count = 4;      
-        
         
         // Now we will the function for the images.
         // We will move the image from the temporary location to the permamanent one:
@@ -30,7 +29,7 @@
         
         $query = "INSERT INTO posts".
                 "(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ".
-                "VALUES({$post_category}, '{$post_title}','{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
+                "VALUES({$post_category_id}, '{$post_title}','{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
         //"VALUES(1, 'a','a', 2020-10-01, '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
         
         $add_post_query = mysqli_query($connection, $query);  
@@ -51,7 +50,23 @@
 	
 	<div class="form-group">
 		<label for="post_category_id">Post Category Id</label>
-		<input type=text class="form-control" name="post_category_id">
+		<br>
+		<?php 
+    		$query = "SELECT * FROM categories";
+    		$select_categories = mysqli_query($connection, $query);
+		    
+    		confirmQuery($select_categories);
+		?>
+    		  	<select name="post_category" id="post_category">
+        		  <?php 
+            		  while($row = mysqli_fetch_assoc($select_categories)) {
+            		          $cat_id = $row['cat_id'];
+            		          $cat_title=$row['cat_title'];
+            		          echo "<option value='{$cat_id}'>{$cat_title}</option>";         
+        		      }
+                  ?>
+    		  	</select>
+		<!--<input type=text class="form-control" name="post_category_id">-->
 	</div>
 	
 	<div class="form-group">
@@ -76,7 +91,7 @@
 	
 	<div class="form-group">
 		<label for="post_content">Post Content</label>
-		<textarea type=text class="form-control" name="post_content" id="" cols="30" rows="10">
+		<textarea class="form-control" name="post_content" id="" cols="30" rows="10">
 		</textarea>
 	</div>
 	

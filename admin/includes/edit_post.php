@@ -96,7 +96,7 @@
 	
 	<div class="form-group">
 		<label for="post_category_id">Post Category Id</label>		
-		
+		<br>
 		<?php 
     		$query = "SELECT * FROM categories";
     		$select_categories = mysqli_query($connection, $query);

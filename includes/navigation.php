@@ -46,7 +46,7 @@
                     
                  -->
                  
-                 
+                <li><a href="admin/index.php">Admin</a></li> 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

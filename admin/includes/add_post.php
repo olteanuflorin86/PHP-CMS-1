@@ -84,11 +84,4 @@
 		<input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
 	</div>
 	
-	
-	
-	
-	
-
-
-
 </form>

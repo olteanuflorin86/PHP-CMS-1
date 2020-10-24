@@ -41,9 +41,25 @@
 
                         		    
                         		    ?>
+                        		    
+                        		    <?php 
+                        		    
+                        		      $query = "SELECT cat_title FROM categories WHERE cat_id={$post_category_id}";
+                        		      $select_category_title = mysqli_query($connection, $query);
+                        		      confirmQuery($select_category_title);
+                        		      
+                        		      while($row = mysqli_fetch_assoc($select_category_title)) {
+                        		          $cat_title_name = $row['cat_title'];
+                        		      }
+                        		    
+                        		    ?>
+                        		    
+                        		    
                         		    <tr>
                             		    <td><?php echo $post_id; ?></td>
-                            		    <td><?php echo $post_category_id; ?></td>
+                            		    <!--<td><?php //echo $post_category_id; ?></td>-->
+                            		    <td><?php echo $cat_title_name; ?></td>                            		    
+                            		    
                             		    <td><?php echo $post_title; ?></td>
                             		    <td><?php echo $post_author; ?></td>
                             		    <td><?php echo $post_date; ?></td>
@@ -52,9 +68,12 @@
                             		    <td><?php echo $post_tags; ?></td>
                             		    <td><?php echo $post_comment_count; ?></td>
                             		    <td><?php echo $post_status; ?></td>
+                            		    <td><a href=<?php echo "posts.php?source=edit_post&p_id={$post_id}"; ?>>Edit</a></td>
                             		    <td><a href=<?php echo "posts.php?delete={$post_id}"; ?>>Delete</a></td>
                         			</tr>
-                        		<?php } ?>  
+                        		<?php } ?>                		
+                        		
+                        		
                         		<?php deletePosts(); ?>                      		
                         	</tbody>
                         </table>

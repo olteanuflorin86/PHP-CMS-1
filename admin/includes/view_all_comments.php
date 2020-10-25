@@ -63,12 +63,42 @@
                             		    <td><a href="../post.php?p_id=<?php echo $post_id; ?>"><?php echo $comment_post_title; ?></a></td>
                             		    
                             		    <td><?php echo $comment_date; ?></td>
-                            		    <td><a href=<?php echo "posts.php?source=edit_post&p_id="?>>Approve</a></td>
-                        				<td><a href=<?php echo "post.php?delet="?>>Unapprove</a></td>
+                            		    <td><a href=<?php echo "comments.php?approve=$comment_id"?>>Approve</a></td>
+                        				<td><a href=<?php echo "comments.php?unapprove=$comment_id"?>>Unapprove</a></td>
                         				<td><a href=<?php echo "comments.php?delete=$comment_id"?>>Delete</a></td>
                         			</tr>
                         		<?php } ?>                		
                         		
+                        		<?php 
+                        		  // THIS IS FOR UNAPPROVE
+                        		  // If a comment is unapprove then we won't see it in post.php
+                        		if(isset($_GET['unapprove'])) {
+                        		    
+                        		    $the_comment_id = $_GET['unapprove'];
+                        		    $query = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id = {$the_comment_id}";
+                        		    $update_query = mysqli_query($connection, $query);
+                        		    confirmQuery($update_query);
+                        		    
+                        		    header("Location: comments.php");
+                        		    
+                        		}
+                        		?>
+                        		
+                        		<?php 
+                        		  // THIS IS FOR APPROVE
+                        		  // If a comment is approve then we will see it in post.php
+                        		if(isset($_GET['approve'])) {
+                        		    
+                        		    $the_comment_id = $_GET['approve'];
+                        		    
+                        		    $query = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id = {$the_comment_id}";
+                        		    $update_query = mysqli_query($connection, $query);
+                        		    confirmQuery($update_query);
+                        		    
+                        		    header("Location: comments.php");
+                        		    
+                        		}
+                        		?>
                         		
                         		<?php deleteComments(); ?>                      		
                         	</tbody>

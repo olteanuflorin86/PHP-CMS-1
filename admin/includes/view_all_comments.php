@@ -10,7 +10,6 @@
                         			<th>Date</th>
                         			<th>Approve</th>
                         			<th>Unapprove</th>
-                        			<th>Edit</th>
                         			<th>Delete</th>
                         			
                         		</tr>                        	
@@ -43,7 +42,6 @@
                         		    
                         		    <tr>
                             		    <td><?php echo $comment_id; ?></td>
-                            		    <!--<td><?php //echo $post_category_id; ?></td>-->
                             		    <td><?php echo $comment_author; ?></td>                          		    
                             		    <td><?php echo $comment_content; ?></td>
                             		    <td><?php echo $comment_email; ?></td>
@@ -66,13 +64,12 @@
                             		    
                             		    <td><?php echo $comment_date; ?></td>
                             		    <td><a href=<?php echo "posts.php?source=edit_post&p_id="?>>Approve</a></td>
-                        				<td><a href=<?php echo "post.php?delete="?>>Unapprove</a></td>
-                        				<td><a href=<?php echo "posts.php?source=edit_post&p_id="?>>Edit</a></td>
-                        				<td><a href=<?php echo "post.php?delete="?>>Delete</a></td>
+                        				<td><a href=<?php echo "post.php?delet="?>>Unapprove</a></td>
+                        				<td><a href=<?php echo "comments.php?delete=$comment_id"?>>Delete</a></td>
                         			</tr>
                         		<?php } ?>                		
                         		
                         		
-                        		<?php deletePosts(); ?>                      		
+                        		<?php deleteComments(); ?>                      		
                         	</tbody>
                         </table>

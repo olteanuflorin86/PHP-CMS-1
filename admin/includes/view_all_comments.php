@@ -19,7 +19,7 @@
                         		<?php 
                         		
                         		// FIND ALL POSTS QUERY
-                        		$query = 'SELECT * FROM comments';
+                        		$query = 'SELECT * FROM comments ORDER BY comment_id DESC';
                         		$select_comments = mysqli_query($connection, $query);
                         		
                         		if(!$select_comments) {

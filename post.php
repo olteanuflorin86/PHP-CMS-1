@@ -69,14 +69,52 @@
 				    $comment_content = $_POST['comment_content'];
 				    
 				    $query = "INSERT INTO comments".
-								    "(comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ".
-								    "VALUES({$the_p_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Approved', now())";
+							 "(comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ".
+							 "VALUES({$the_p_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Approved', now())";
 				    
 				    $add_comment_query = mysqli_query($connection, $query);
 				    if(!$add_comment_query) {
 				        die("QUERY FAILED" . mysqli_error($connection));
 				    }
-
+				    
+				    // THIS IS HIS VARIANT OF DOING THINGS:
+				    /*
+				    $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = {$the_p_id} ";
+				    $update_post_comment_count_query = mysqli_query($connection, $query);
+				    if(!$update_post_comment_count_query) {
+				        die("QUERY FAILED" . mysqli_error($connection));
+				    }
+				    */
+				    
+				    // THIS IS ONE VARIANT OF DOING THINGS
+				    
+				    // we get the current number of comment for that post from the DB
+				    $query = "SELECT * FROM posts WHERE post_id={$the_p_id}";
+				    $post_comment_count_query = mysqli_query($connection, $query);
+				    if(!$post_comment_count_query) {
+				        die("QUERY FAILED" . mysqli_error($connection));
+				    }
+				    
+				    while($row = mysqli_fetch_assoc($post_comment_count_query)) {			        
+				        $post_id = $row['post_id'];
+				        $post_author = $row['post_author'];
+				        $post_title = $row['post_title'];
+				        $post_category_id = $row['post_category_id'];
+				        $post_status = $row['post_status'];
+				        $post_image = $row['post_image'];
+				        $post_tags = $row['post_tags'];
+				        $post_comment_count = $row['post_comment_count'];
+				        $post_date = $row['post_date'];
+				        $post_content = $row['post_content'];
+				    }
+				    
+				    // we update the new number of comments for that post into the DB
+				    $query = "UPDATE posts SET post_comment_count = ($post_comment_count+1) WHERE post_id = {$the_p_id} ";
+				    $update_post_comment_count_query = mysqli_query($connection, $query);
+				    if(!$update_post_comment_count_query) {
+				        die("QUERY FAILED" . mysqli_error($connection));
+				    }
+				    
 				    
 				}
 				

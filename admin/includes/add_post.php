@@ -17,7 +17,12 @@
         $post_tags = $_POST['post_tags'];
         $post_content = $_POST['post_content'];
         $post_date = date('d-m-y');
-        $post_comment_count = 4;      
+        
+        
+        
+        $post_id = $_POST['post_id'];
+        
+        $post_comment_count = 0;      
         
         // Now we will the function for the images.
         // We will move the image from the temporary location to the permamanent one:

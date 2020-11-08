@@ -11,6 +11,8 @@
                         			<th>Tags</th>
                         			<th>Comments</th>
                         			<th>Status</th>
+                        			<th>Edit</th>
+                        			<th>Delete</th>
                         		</tr>                        	
                         	</thead>
                         	<tbody>

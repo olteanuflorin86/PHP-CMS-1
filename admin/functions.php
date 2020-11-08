@@ -95,7 +95,7 @@ function deleteComments() {
     // When we use a function and we need a variable to be available we can bring it with global keyword
     global $connection;
     
-    // THIS IS FOR DELETE A CATEGORY IN DB
+    // THIS IS FOR DELETE A COMMENT IN DB
     if(isset($_GET['delete'])) {
         $the_comment_id = $_GET['delete'];
         
@@ -104,6 +104,26 @@ function deleteComments() {
         $delete_query = mysqli_query($connection, $query);
         // we want the page to refresh after DELETE so we'll see the difference - with header()
         header("Location: comments.php");
+        
+    }
+}
+
+
+function deleteUsers() {
+    
+    // We will make $connection variable global so we can access the DB
+    // When we use a function and we need a variable to be available we can bring it with global keyword
+    global $connection;
+    
+    // THIS IS FOR DELETE AN USERS IN DB
+    if(isset($_GET['delete'])) {
+        $the_user_id = $_GET['delete'];
+        
+        // DELETE A CATEGORY QUERY
+        $query = "DELETE FROM users WHERE user_id = {$the_user_id} ";
+        $delete_query = mysqli_query($connection, $query);
+        // we want the page to refresh after DELETE so we'll see the difference - with header()
+        header("Location: users.php");
         
     }
 }

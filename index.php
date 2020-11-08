@@ -8,14 +8,12 @@
 	
     <!-- Page Content -->
     <div class="container"> 
-
+    
         <div class="row">
-
+        
             <!-- Blog Entries Column -->
             <div class="col-md-8">
             
-            	
-
                 <h1 class="page-header">                
                                
                     Page Heading
@@ -25,18 +23,26 @@
                 <?php 
                 
 	               // FIND ALL POSTS QUERY
-	               $query = 'SELECT * FROM posts';
+	               $query = "SELECT * FROM posts";
 	               $select_all_posts_query = mysqli_query($connection, $query);
-	   
+	               
 	               while($row = mysqli_fetch_assoc($select_all_posts_query)) {
 	                   $post_id = $row['post_id'];
 	                   $post_title = $row['post_title'];
 	                   $post_author = $row['post_author'];
 	                   $post_date = $row['post_date'];
 	                   $post_image = $row['post_image'];
+	                   $post_content = substr($row['post_content'],0,100);  
 	                   // we limit number of characters displayed in index.php for content
 	                   // (we will do the same thing for category.php):
-	                   $post_content = substr($row['post_content'],0,100);     
+	                   $post_status = $row['post_status'];   
+	                   
+	                   if($post_status !== "published") {
+	                       echo "<h1 class='text-center'> NO POST, SORRY! </h1>";
+	                       echo "<br>";
+	                   } else {
+	                       
+	                   
 	
 	            ?>
 
@@ -56,7 +62,7 @@
 				
 				<?php } ?>
 
-         
+         		<?php } ?>
             </div>
 
             <!-- Blog Sidebar Widgets Column -->

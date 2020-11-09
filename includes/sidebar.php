@@ -17,8 +17,23 @@
                     </form> <!-- search form -->
                 </div>
                 
-                
-                
+                <!-- Login -->
+                <div class="well">
+                    <h4>Login</h4>
+                    <!-- the values submitted will be sent to login.php page -->
+                    <form action="includes/login.php" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter Username" name="username">
+                        </div>
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Enter Password" name="password">
+                            <span class="input-group-btn">
+                            	<button class="btn btn-primary" type="submit" name="login">Submit</button>
+                            </span>
+                        </div>
+                        <!-- /.input-group -->
+                    </form> <!-- search form -->
+                </div>
                 
 
                 <!-- Blog Categories Well -->

@@ -17,6 +17,8 @@ if(isset($_SESSION['user_role'])) {
         // things will go through as intended ... we can skip this else if, of course...         
     }
     
+} else {
+    header('Location: ../index.php');
 }
 
 

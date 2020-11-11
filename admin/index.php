@@ -34,8 +34,15 @@
                                         <i class="fa fa-file-text fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                <div class='huge'>12</div>
-                                        <div>Posts</div>
+                    		            <div class='huge'>
+                    		            	<?php                                         
+                                            $query = "SELECT * FROM posts";
+                                            $select_posts = mysqli_query($connection, $query);
+                                            $number_of_posts = mysqli_num_rows($select_posts);
+                                            echo $number_of_posts;
+                                            ?>
+                    		            </div>
+                                    <div>Posts</div>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +63,14 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                    <div class='huge'>23</div>
+                                    	<div class='huge'>
+                                    		<?php                                         
+                                            $query = "SELECT * FROM comments";
+                                            $select_comments = mysqli_query($connection, $query);
+                                            $number_of_comments = mysqli_num_rows($select_comments);
+                                            echo $number_of_comments;
+                                            ?>    
+                                    	</div>
                                     <div>Comments</div>
                                     </div>
                                 </div>
@@ -78,8 +92,15 @@
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                    <div class='huge'>23</div>
-                                        <div> Users</div>
+                                    	<div class='huge'>
+                                    		<?php                                         
+                                            $query = "SELECT * FROM users";
+                                            $select_users = mysqli_query($connection, $query);
+                                            $number_of_users = mysqli_num_rows($select_users);
+                                            echo $number_of_users;
+                                            ?>
+                                    	</div>
+                                    <div> Users</div>
                                     </div>
                                 </div>
                             </div>
@@ -100,8 +121,15 @@
                                         <i class="fa fa-list fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class='huge'>13</div>
-                                        <div>Categories</div>
+                                        <div class='huge'>
+                                        	<?php                                         
+                                            $query = "SELECT * FROM categories";
+                                            $select_categories = mysqli_query($connection, $query);
+                                            $number_of_categories = mysqli_num_rows($select_categories);
+                                            echo $number_of_categories;
+                                            ?>
+                                        </div>
+                                    <div>Categories</div>
                                     </div>
                                 </div>
                             </div>

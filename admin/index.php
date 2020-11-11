@@ -121,14 +121,12 @@
                                         <i class="fa fa-list fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class='huge'>
-                                        	<?php                                         
-                                            $query = "SELECT * FROM categories";
-                                            $select_categories = mysqli_query($connection, $query);
-                                            $number_of_categories = mysqli_num_rows($select_categories);
-                                            echo $number_of_categories;
-                                            ?>
-                                        </div>
+                                    	<?php                                         
+                                        $query = "SELECT * FROM categories";
+                                        $select_categories = mysqli_query($connection, $query);
+                                        $number_of_categories = mysqli_num_rows($select_categories);
+                                        echo "<div class='huge'>{$number_of_categories}</div>";
+                                        ?>
                                     <div>Categories</div>
                                     </div>
                                 </div>

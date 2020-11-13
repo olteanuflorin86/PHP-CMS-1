@@ -123,7 +123,18 @@
 	
 	<div class="form-group">		
 		<label for="post_status">Post Status</label>
-		<input value="<?php if(isset($post_status)) {echo $post_status;} ?>" type=text class="form-control" name="post_status">
+		<!-- <input value="<?php //if(isset($post_status)) {echo $post_status;} ?>" type=text class="form-control" name="post_status">-->
+		<select name="post_status" id="">			
+			<option value="draft"><?php echo $post_status; ?></option>
+			<?php 
+			if($post_status === 'draft') {
+			    echo "<option value='published'>published</option>";
+			} 
+			else {
+				echo "<option value='draft'>draft</option>";
+			}
+			?>		
+		</select>
 	</div>
 	
 	<div class="form-group">

@@ -29,6 +29,15 @@
 
 <!-- we have multiport/form-data because we work with an image -->
 <form action="" method="post" enctype="multipart/form-data">
+
+	<?php 
+	
+	if(isset($_POST['create_user'])) {
+	    // we added a CSS class to the link bellow / we can also add bootstrap class if we import it
+	    echo "User Created: " . " " . "<a href='users.php' style='color:green;'>View Users</a>";
+	}
+	
+	?>
 	
 	<div class="form-group">
 		<label for="user_firstname">Firstname</label>

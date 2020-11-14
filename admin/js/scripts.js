@@ -17,7 +17,7 @@ console.log("scripts.js");
                                 
                         // REST OF THE CODE
 
- });
+
                                 
                    });
                    

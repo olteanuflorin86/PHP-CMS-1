@@ -36,7 +36,7 @@
 	                   // we limit number of characters displayed in index.php for content
 	                   // (we will do the same thing for category.php):
 	                   $post_status = $row['post_status'];   
-	                   // WE JUST DON'T DISPLAY THE DRAFT POSTS, NO NEED FOR THE MESSAGE BELLOW
+	                   // WE JUST DON'T DISPLAY THE DRAFT POSTS, NO NEED FOR THE MESSAGE BELOW
 	                   // so we invalidated the if, not erased it
 	                   if($post_status !== "published") {
 	                       //echo "<h1 class='text-center'> NO POST, SORRY! </h1>";

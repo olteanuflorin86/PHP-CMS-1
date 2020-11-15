@@ -33,7 +33,7 @@
 	<?php 
 	
 	if(isset($_POST['create_user'])) {
-	    // we added a CSS class to the link bellow / we can also add bootstrap class if we import it
+	    // we added a CSS class to the link below / we can also add bootstrap class if we import it
 	    echo "User Created: " . " " . "<a href='users.php' style='color:green;'>View Users</a>";
 	}
 	

@@ -1,6 +1,65 @@
+<?php 
+
+if(isset($_POST['checkBoxArray'])) {
+    // if it is not empty anymore, if at least one box is checked
+    foreach($_POST['checkBoxArray'] as $checkBoxValue) {
+        // every checkBoxValue from the array is a post id
+        
+        $bulk_options = $_POST['bulk_options'];
+        
+        switch($bulk_options) {
+            case 'published':
+                $query = "UPDATE posts SET post_status = 'published' 
+                                                WHERE post_id = {$checkBoxValue}";
+                $update_post_status = mysqli_query($connection, $query);
+                if(!$update_post_status) {
+                    die("QUERY FAILURE" . mysqli_error($connection));
+                }
+                break;
+            case 'draft':
+                $query = "UPDATE posts SET post_status = 'draft'
+                                                WHERE post_id = {$checkBoxValue}";
+                $update_post_status = mysqli_query($connection, $query);
+                if(!$update_post_status) {
+                    die("QUERY FAILURE" . mysqli_error($connection));
+                }
+                break;
+            case 'delete':
+                $query = "DELETE FROM posts WHERE post_id = {$checkBoxValue}";
+                $delete_post = mysqli_query($connection, $query);
+                if(!$delete_post) {
+                    die("QUERY FAILURE" . mysqli_error($connection));
+                }
+                break;
+            default:
+                break;
+        }
+        
+    }
+}
+
+?>
+
+<form action="" method="post">
+
+							<div id="bulkOptionsContainer" class="col-xs-4" style="padding:0px;">
+    							<select class="form-control" name="bulk_options" id="">
+    								<option value="">Select Options</option>
+    								<option value="published">Publish</option>
+    								<option value="draft">Draft</option>
+    								<option value="delete">Delete</option>
+    							</select>
+							</div>
+							
+							<div class="col-xs-4"> 
+								<input type="submit" name="submit" class="btn btn-success" value="Apply">
+								<a class="btn btn-primary" href="add_post.php">Add New</a>
+							</div>
+							
 						<table class="table table-bordered table-hover">
                         	<thead>
                         		<tr>
+                        			<th><input id="selectAllBoxes" type="checkbox"></th>
                         			<th>Id</th>
                         			<th>Category id</th>
                         			<th>Title</th>                       			
@@ -58,6 +117,9 @@
                         		    
                         		    
                         		    <tr>
+                        		    	<!-- The name below is an array because we can check more posts - so we add more post ids to the array. 
+                        		    	We put post_id at value so we will send that id into the array. At first is an empty array -->
+                        		    	<td><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" value=<?php echo $post_id; ?>></td>
                             		    <td><?php echo $post_id; ?></td>
                             		    <!--<td><?php //echo $post_category_id; ?></td>-->
                             		    <td><?php echo $cat_title_name; ?></td>                            		    
@@ -79,3 +141,5 @@
                         		<?php deletePosts(); ?>                      		
                         	</tbody>
                         </table>
+                        
+</form>
